@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_01_02_050108) do
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "start_date"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2020_01_02_050108) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "farst_name", default: "", null: false
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
     t.string "family_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
