@@ -1,0 +1,33 @@
+$(function () {
+  // 画面遷移を検知
+  $(document).on('turbolinks:load', function () {
+      // lengthを呼び出すことで、#calendarが存在していた場合はtrueの処理がされ、無い場合はnillを返す
+      if ($('#calendar').length) {
+          function eventCalendar() {
+              return $('#calendar').fullCalendar({
+              });
+          };
+          function clearCalendar() {
+              $('#calendar').html('');
+          };
+
+          $(document).on('turbolinks:load', function () {
+              eventCalendar();
+          });
+          $(document).on('turbolinks:before-cache', clearCalendar);
+
+          $('#calendar').fullCalendar({
+            // events: [{
+              events : '/events.json'
+            // }],
+                // 取得した API Key
+                // eventSources : [
+                //   {
+                //     googleCalendarApiKey: 'AIzaSyDtiuoYhOgSTIO2OYWS5FMj0IUpQ--YqDs',
+ 
+                //     events: 'japanese__ja@holiday.calendar.google.com'
+                // // }]
+          });
+        }
+    });
+});
